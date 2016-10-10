@@ -1,5 +1,5 @@
-# HabitRPG Calendar
+# Habitica week at a glance
 
-[HabitRPG-Calendar](https://habitrpg-calendar.herokuapp.com/) is a small WebApp that takes your HabitRPG ToDos and displays them in calendar format.
+[Habitica week at a glance](https://habitica-week-at-a-glance.herokuapp.com/) is an app which displays your [Habitica](https://habitica.com) Dailies and ToDos in a week overview calendar format.
 
 It's currently under development, so it may be unstable or insecure.
