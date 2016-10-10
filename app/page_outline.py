@@ -3,7 +3,7 @@ from html_writer import Tag
 def get():
 	target = Tag('div', {'class': 'container'})(
 		Tag('h1')(
-			'HabitRPG Calendar'
+			'Habitica week at a glance'
 		)
 	)
 	framework = Tag('html')(
@@ -11,7 +11,7 @@ def get():
 			Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/normalise.css'}),
 			Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/style.css'}),
 			Tag('title')(
-				'HabitRPG Calendar'
+				'Habitica week at a glance'
 			)
 		),
 		Tag('body')(
