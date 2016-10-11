@@ -15,44 +15,27 @@ def get_tasks(uuid, ukey, time_offset):
 		'content-type': 'application/json'
 	}
 	# ToDos
-	r = requests.get('https://habitica.com/api/v3/tasks/todos', headers = heads)
+	r = requests.get('https://habitica.com/api/v3/tasks/user', headers = heads)
 	tasks = json.loads(str(r.content, encoding = 'utf-8'))
 	tasks = tasks['data']
 	tasks_by_date = {}
 	for i in tasks:
-		if 'date' in i:
-			datetext = i['date']
-			if datetext != None:
-				dateparts = re.split(r'\-|\:|\.|T|Z', datetext)
-				dateparts = [int(i) for i in dateparts if i.isnumeric()]
-				dto = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
-				# This should fix the off-by-one issue.
-				dto += datetime.timedelta(hours = 12)
-				item = (i['text'], i['notes'])
-				dto = dto.date() # Remove the time part.
-				if dto in tasks_by_date:
-					tasks_by_date[dto].append(item)
-				else:
-					tasks_by_date[dto] = [item]
-	# Dailys
-	r = requests.get('https://habitica.com/api/v3/tasks/dailys', headers = heads)
-	tasks = json.loads(str(r.content, encoding = 'utf-8'))
-	tasks = tasks['data']
-	for i in tasks:
-		if 'date' in i:
-			datetext = i['date']
-			if datetext != None:
-				dateparts = re.split(r'\-|\:|\.|T|Z', datetext)
-				dateparts = [int(i) for i in dateparts if i.isnumeric()]
-				dto = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
-				# This should fix the off-by-one issue.
-				dto += datetime.timedelta(hours = 12)
-				item = (i['text'], i['notes'])
-				dto = dto.date() # Remove the time part.
-				if dto in tasks_by_date:
-					tasks_by_date[dto].append(item)
-				else:
-					tasks_by_date[dto] = [item]
+		if i.get('completed') == False and (i['type'] == 'todo' or i['type'] == 'daily'):
+			if 'date' in i:
+				datetext = i['date']
+				if datetext != None:
+					dateparts = re.split(r'\-|\:|\.|T|Z', datetext)
+					dateparts = [int(i) for i in dateparts if i.isnumeric()]
+					dto = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
+					# This should fix the off-by-one issue.
+					dto += datetime.timedelta(hours = 12)
+					item = (i['text'], i['notes'])
+					dto = dto.date() # Remove the time part.
+					if dto in tasks_by_date:
+						tasks_by_date[dto].append(item)
+					else:
+						tasks_by_date[dto] = [item]
+	
 	return tasks_by_date
 
 def get_display_dates():
