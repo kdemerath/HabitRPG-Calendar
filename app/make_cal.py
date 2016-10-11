@@ -48,7 +48,7 @@ def get_display_dates():
 
 	display_dates = set()
 
-	for i in range(1, 13):
+	for i in range(1, datetime.datetime.now().month):
 		display_dates = display_dates.union(set(dates_for_month(this_year, i)))
 
 	display_dates = list(display_dates)
