@@ -42,7 +42,7 @@ def get_tasks(uuid, ukey, time_offset):
 				if frequencytext != None:
 					for i in range(7):
 						if frequencytext == 'weekly':
-							if i['repeat'].get('m') == True:
+							if i.get('repeat').get('m') == True:
 								dto = display_dates[0]
 								dto = dto.date()
 								item = (i['text'], i['notes'])
