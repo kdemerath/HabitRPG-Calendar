@@ -44,7 +44,7 @@ def get_tasks(uuid, ukey, time_offset):
 						if i['repeat'].get('m') == True:
 							dto = display_dates[0]
 							dto = dto.date()
-							print(dto)
+							#print(dto)
 							item = (i['text'], i['notes'])
 							if dto in tasks_by_date:
 								tasks_by_date[dto].append(item)
@@ -191,7 +191,7 @@ def make_cal(uuid, ukey, timezone):
 				*[Tag('td')(Tag('p')(i)) for i in days_of_week]
 			)
 		)
-		print('calender aufbauen')
+		#print('calender aufbauen')
 		for i in range(0, len(display_dates), 7):
 			row = Tag('tr')
 			for j in display_dates[i: i + 7]:
@@ -201,8 +201,8 @@ def make_cal(uuid, ukey, timezone):
 				else:
 					datetext = Tag('p', {'class': 'smallText'})(text)
 				contents_html = ''
-				print(j)
-				print(j.date())
+				#print(j)
+				#print(j.date())
 				for k in tasks_by_date.get(j.date(), []):
 					markdown_html = markdown.markdown(k[0])
 					if k[1]:
