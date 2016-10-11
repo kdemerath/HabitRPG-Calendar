@@ -27,15 +27,16 @@ def get_tasks(uuid, ukey, time_offset):
 				if datetext != None:
 					dateparts = re.split(r'\-|\:|\.|T|Z', datetext)
 					dateparts = [int(i) for i in dateparts if i.isnumeric()]
-					dto = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
-					# This should fix the off-by-one issue.
-					dto += datetime.timedelta(hours = 12)
-					item = (i['text'], i['notes'])
-					dto = dto.date() # Remove the time part.
-					if dto in tasks_by_date:
-						tasks_by_date[dto].append(item)
-					else:
-						tasks_by_date[dto] = [item]
+					if len(dateparts) == 4:
+						dto = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
+						# This should fix the off-by-one issue.
+						dto += datetime.timedelta(hours = 12)
+						item = (i['text'], i['notes'])
+						dto = dto.date() # Remove the time part.
+						if dto in tasks_by_date:
+							tasks_by_date[dto].append(item)
+						else:
+							tasks_by_date[dto] = [item]
 		elif i['type'] == 'daily':
 			if 'frequency' in i:
 				frequencytext = i['frequency']
