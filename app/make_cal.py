@@ -179,7 +179,10 @@ def make_cal(uuid, ukey, timezone):
 			row = Tag('tr')
 			for j in display_dates[i: i + 7]:
 				text = '{} {}'.format(j.day, months_of_year_short[j.month - 1])
-				datetext = Tag('p', {'class': 'smallText'})(text)
+				if j.month == dto_now.month and j.day == dto_now.day:
+					datetext = Tag('p', {'class': 'smallTextblueBG'})(text)
+				else:
+					datetext = Tag('p', {'class': 'smallText'})(text)
 				contents_html = ''
 				print(j)
 				print(j.date())
