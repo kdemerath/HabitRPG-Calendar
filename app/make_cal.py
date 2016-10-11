@@ -98,6 +98,23 @@ def get_tasks(uuid, ukey, time_offset):
 								tasks_by_date[dto].append(item)
 							else:
 								tasks_by_date[dto] = [item]
+					elif frequencytext == 'daily':
+						if 'startDate' in i:
+							startDatetext = i['startDate']
+							if startDatetext != None:
+								dateparts = re.split(r'\-|\:|\.|T|Z', startDatetext)
+								dateparts = [int(q) for q in dateparts if q.isnumeric()]
+								startDate = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
+								for m in range(7):
+									dateDiff = display_dates[m] - startDate
+									if startDate < display_dates[m] and dateDiff.days % i[everyX] == 0:
+										dto = display_dates[6]
+										dto = dto.date()
+										item = (i['text'], i['notes'])
+										if dto in tasks_by_date:
+											tasks_by_date[dto].append(item)
+										else:
+											tasks_by_date[dto] = [item]
 	
 	return tasks_by_date
 
