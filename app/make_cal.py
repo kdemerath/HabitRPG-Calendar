@@ -15,7 +15,7 @@ def get_tasks(uuid, ukey, time_offset):
 		'content-type': 'application/json'
 	}
 	# ToDos
-	r = requests.get('https://habitica.com/api/v3/tasks/user/todos', headers = heads)
+	r = requests.get('https://habitica.com/api/v3/tasks/todos', headers = heads)
 	tasks = json.loads(str(r.content, encoding = 'utf-8'))
 	tasks = tasks['data']
 	tasks_by_date = {}
@@ -35,7 +35,7 @@ def get_tasks(uuid, ukey, time_offset):
 				else:
 					tasks_by_date[dto] = [item]
 	# Dailys
-	r = requests.get('https://habitica.com/api/v3/tasks/user/dailys', headers = heads)
+	r = requests.get('https://habitica.com/api/v3/tasks/dailys', headers = heads)
 	tasks = json.loads(str(r.content, encoding = 'utf-8'))
 	tasks = tasks['data']
 	for i in tasks:
