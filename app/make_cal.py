@@ -108,7 +108,7 @@ def get_tasks(uuid, ukey, time_offset):
 								for m in range(7):
 									dateDiff = display_dates[m] - startDate
 									if startDate < display_dates[m] and dateDiff.days % i['everyX'] == 0:
-										dto = display_dates[6]
+										dto = display_dates[m]
 										dto = dto.date()
 										item = (i['text'], i['notes'])
 										if dto in tasks_by_date:
