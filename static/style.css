@@ -9,6 +9,12 @@
 	margin: 0px;
 }
 
+.smallTextblueBG {
+	color: darkgrey;
+	font-size: 10px;
+	margin: 0px;
+}
+
 .lightBackground {
 	background-color: #f6f6f6;
 }
