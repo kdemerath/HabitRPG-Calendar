@@ -44,6 +44,7 @@ def get_tasks(uuid, ukey, time_offset):
 						if i['repeat'].get('m') == True:
 							dto = display_dates[0]
 							dto = dto.date()
+							print(dto)
 							item = (i['text'], i['notes'])
 							if dto in tasks_by_date:
 								tasks_by_date[dto].append(item)
