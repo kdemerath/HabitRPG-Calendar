@@ -50,8 +50,6 @@ def get_tasks(uuid, ukey, time_offset):
 									tasks_by_date[dto].append(item)
 								else:
 									tasks_by_date[dto] = [item]
-						elif frequencytext == 'daily':
-							
 	
 	return tasks_by_date
 
