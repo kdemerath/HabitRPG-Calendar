@@ -182,7 +182,8 @@ def make_cal(uuid, ukey, timezone):
 				datetext = Tag('p', {'class': 'smallText'})(text)
 				contents_html = ''
 				print(j)
-				for k in tasks_by_date.get(j.date, []):
+				print(j.date())
+				for k in tasks_by_date.get(j.date(), []):
 					markdown_html = markdown.markdown(k[0])
 					if k[1]:
 						markdown_html = '<span title="{}">{}</span>'.format(k[1], markdown_html)
