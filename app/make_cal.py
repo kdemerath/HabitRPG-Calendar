@@ -40,16 +40,63 @@ def get_tasks(uuid, ukey, time_offset):
 			if 'frequency' in i:
 				frequencytext = i['frequency']
 				if frequencytext != None:
-					for j in range(7):
-						if frequencytext == 'weekly':
-							if i['repeat'].get('m') == True:
-								dto = display_dates[0]
-								dto = dto.date()
-								item = (i['text'], i['notes'])
-								if dto in tasks_by_date:
-									tasks_by_date[dto].append(item)
-								else:
-									tasks_by_date[dto] = [item]
+					if frequencytext == 'weekly':
+						if i['repeat'].get('m') == True:
+							dto = display_dates[0]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
+						if i['repeat'].get('t') == True:
+							dto = display_dates[1]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
+						if i['repeat'].get('w') == True:
+							dto = display_dates[2]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
+						if i['repeat'].get('th') == True:
+							dto = display_dates[3]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
+						if i['repeat'].get('f') == True:
+							dto = display_dates[4]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
+						if i['repeat'].get('s') == True:
+							dto = display_dates[5]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
+						if i['repeat'].get('su') == True:
+							dto = display_dates[6]
+							dto = dto.date()
+							item = (i['text'], i['notes'])
+							if dto in tasks_by_date:
+								tasks_by_date[dto].append(item)
+							else:
+								tasks_by_date[dto] = [item]
 	
 	return tasks_by_date
 
