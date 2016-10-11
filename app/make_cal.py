@@ -27,7 +27,7 @@ def get_tasks(uuid, ukey, time_offset):
 				if datetext != None:
 					dateparts = re.split(r'\-|\:|\.|T|Z', datetext)
 					dateparts = [int(i) for i in dateparts if i.isnumeric()]
-					if len(dateparts) == 4:
+					if len(dateparts) >= 4:
 						dto = datetime.datetime(dateparts[0], dateparts[1], dateparts[2], dateparts[3])
 						# This should fix the off-by-one issue.
 						dto += datetime.timedelta(hours = 12)
