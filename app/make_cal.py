@@ -19,8 +19,9 @@ def get_tasks(uuid, ukey, time_offset):
 	tasks = json.loads(str(r.content, encoding = 'utf-8'))
 	tasks = tasks['data']
 	tasks_by_date = {}
+	display_dates = get_display_dates()
 	for i in tasks:
-		if i.get('completed') == False and (i['type'] == 'todo' or i['type'] == 'daily'):
+		if i['type'] == 'todo':
 			if 'date' in i:
 				datetext = i['date']
 				if datetext != None:
@@ -35,6 +36,22 @@ def get_tasks(uuid, ukey, time_offset):
 						tasks_by_date[dto].append(item)
 					else:
 						tasks_by_date[dto] = [item]
+		elif i['type'] == 'daily':
+			if 'frequency' in i:
+				frequencytext = i['frequency']
+				if frequencytext != None:
+					for i in range(7):
+						if frequencytext == 'weekly':
+							if i['repeat'].get('m') == True:
+								dto = display_dates[0]
+								dto = dto.date()
+								item = (i['text'], i['notes'])
+								if dto in tasks_by_date:
+									tasks_by_date[dto].append(item)
+								else:
+									tasks_by_date[dto] = [item]
+						elif frequencytext == 'daily':
+							
 	
 	return tasks_by_date
 
