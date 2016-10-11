@@ -174,13 +174,14 @@ def make_cal(uuid, ukey, timezone):
 				*[Tag('td')(Tag('p')(i)) for i in days_of_week]
 			)
 		)
-
+		print('calender aufbauen')
 		for i in range(0, len(display_dates), 7):
 			row = Tag('tr')
 			for j in display_dates[i: i + 7]:
 				text = '{} {}'.format(j.day, months_of_year_short[j.month - 1])
 				datetext = Tag('p', {'class': 'smallText'})(text)
 				contents_html = ''
+				print(j)
 				for k in tasks_by_date.get(j, []):
 					markdown_html = markdown.markdown(k[0])
 					if k[1]:
