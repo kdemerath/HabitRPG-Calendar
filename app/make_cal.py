@@ -55,7 +55,7 @@ def get_display_dates():
 	#	display_dates = display_dates.union(set(dates_for_month(this_year, i)))
 	
 	for i in range(0 - this_weekday, 7 - this_weekday):
-		display_dates = display_dates.union(datetime.datetime.now() + i*86400.0)
+		display_dates = display_dates.union(datetime.datetime.now() + datetime.timedelta(days=i))
 
 	display_dates = list(display_dates)
 	display_dates.sort(key = lambda x: x.day)
