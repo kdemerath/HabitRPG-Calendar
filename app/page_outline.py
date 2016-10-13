@@ -8,8 +8,9 @@ def get():
 	)
 	framework = Tag('html')(
 		Tag('head')(
-			Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/normalise.css'}),
-			Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/style.css'}),
+			#Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/normalise.css'}),
+			#Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/style.css'}),
+			Tag('link', {'type': 'text/css', 'rel': 'stylesheet', 'href': 'static/app-f131975d.css'}),
 			Tag('title')(
 				'Habitica week at a glance'
 			)
