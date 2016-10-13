@@ -187,7 +187,7 @@ def make_cal(uuid, ukey, timezone):
 		]
 
 		# Construct row of table
-		the_table = Tag('table', {'class': 'myTable'})(
+		the_table = Tag('table', {'class': 'dailys main-list'})(
 			Tag('tr')(
 				*[Tag('td')(Tag('p')(i)) for i in days_of_week]
 			)
