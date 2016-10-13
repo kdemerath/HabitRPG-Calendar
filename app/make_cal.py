@@ -207,7 +207,7 @@ def make_cal(uuid, ukey, timezone):
 				for k in tasks_by_date.get(j.date(), []):
 					markdown_html = markdown.markdown(k[0])
 					if k[1]:
-						markdown_html = '<span title="{}">{}</span>'.format(k[1], markdown_html)
+						markdown_html = '<span class="task-text" title="{}">{}</span>'.format(k[1], markdown_html)
 					contents_html += markdown_html
 				cell = Tag('td')(datetext, contents_html)
 				if j.month % 2 == 0:
